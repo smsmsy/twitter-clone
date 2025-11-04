@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:twitter_clone/src/home.dart';
 import 'package:twitter_clone/src/theme/theme.dart';
 
 void main() {
@@ -32,33 +33,5 @@ class MyApp extends ConsumerWidget {
       themeMode: ref.watch(customThemeModeProvider),
       home: const Home(),
     );
-  }
-}
-
-class Home extends ConsumerWidget {
-  const Home({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final themeMode = ref.watch(customThemeModeProvider);
-    return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () {
-              ref.read(customThemeModeProvider.notifier).toggle();
-            },
-            icon: Icon(getIconData(themeMode)),
-          ),
-        ],
-      ),
-      body: const Center(child: Text('Hello world!')),
-    );
-  }
-
-  IconData getIconData(ThemeMode themeMode) {
-    return themeMode == ThemeMode.dark
-        ? Icons.brightness_3
-        : Icons.brightness_5;
   }
 }
