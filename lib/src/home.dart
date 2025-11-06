@@ -5,8 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/src/home/slider_drawer_app_bar.dart';
 import 'package:twitter_clone/src/home/slider_drawer_menu.dart';
 
-class Home extends ConsumerStatefulWidget {
-  const Home({
+class SliderDrawerScaffold extends ConsumerStatefulWidget {
+  const SliderDrawerScaffold({
     required this.drawer,
     required this.body,
     this.appBarOption,
@@ -21,7 +21,7 @@ class Home extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _HomeState();
 }
 
-class _HomeState extends ConsumerState<Home>
+class _HomeState extends ConsumerState<SliderDrawerScaffold>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   final Duration _duration = Durations.medium1;

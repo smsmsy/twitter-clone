@@ -34,7 +34,7 @@ class MyApp extends ConsumerWidget {
         ),
       ),
       themeMode: ref.watch(customThemeModeProvider),
-      home: const Home(
+      home: const SliderDrawerScaffold(
         appBarOption: SliderDrawerAppBarOption(
           title: Expanded(
             child: Text(
