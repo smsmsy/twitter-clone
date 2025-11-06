@@ -7,26 +7,44 @@ class SliderDrawerMenu extends StatelessWidget {
     required this.mode,
     required this.width,
     required this.ratio,
+    required this.body,
     super.key,
   });
 
   const SliderDrawerMenu.fixed({
     required double width,
+    required Widget body,
     Key? key,
-  }) : this._(mode: SliderDrawerMode.fixed, width: width, ratio: -1, key: key);
+  }) : this._(
+         mode: SliderDrawerMode.fixed,
+         body: body,
+         width: width,
+         ratio: -1,
+         key: key,
+       );
 
-  const SliderDrawerMenu.ratio({required double ratio, Key? key})
-    : this._(mode: SliderDrawerMode.ratio, width: 0, ratio: ratio, key: key);
+  const SliderDrawerMenu.ratio({
+    required double ratio,
+    required Widget body,
+    Key? key,
+  }) : this._(
+         mode: SliderDrawerMode.ratio,
+         body: body,
+         width: 0,
+         ratio: ratio,
+         key: key,
+       );
 
   final SliderDrawerMode mode;
+  final Widget body;
   final double width;
   final double ratio;
 
   @override
   Widget build(BuildContext context) {
     return switch (mode) {
-      SliderDrawerMode.fixed => _FixedDrawerMenu(width: width),
-      SliderDrawerMode.ratio => _RatioDrawerMenu(ratio: ratio),
+      SliderDrawerMode.fixed => _FixedDrawerMenu(width: width, body: body),
+      SliderDrawerMode.ratio => _RatioDrawerMenu(ratio: ratio, body: body),
     };
   }
 
@@ -48,37 +66,35 @@ class SliderDrawerMenu extends StatelessWidget {
 }
 
 class _FixedDrawerMenu extends StatelessWidget {
-  const _FixedDrawerMenu({required this.width});
+  const _FixedDrawerMenu({required this.width, required this.body});
 
   final double width;
+  final Widget body;
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'Drawer Menu',
-        style: TextStyle(color: Colors.white, fontSize: 18),
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: SizedBox(
+        width: width,
+        child: body,
       ),
     );
   }
 }
 
 class _RatioDrawerMenu extends StatelessWidget {
-  const _RatioDrawerMenu({required this.ratio});
+  const _RatioDrawerMenu({required this.ratio, required this.body});
 
   final double ratio;
+  final Widget body;
 
   @override
   Widget build(BuildContext context) {
     return FractionallySizedBox(
       widthFactor: ratio,
       alignment: Alignment.centerLeft,
-      child: const Center(
-        child: Text(
-          'Drawer Menu',
-          style: TextStyle(color: Colors.white, fontSize: 18),
-        ),
-      ),
+      child: body,
     );
   }
 }

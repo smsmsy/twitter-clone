@@ -23,7 +23,15 @@ class Home extends StatelessWidget {
             ),
           ),
         ),
-        drawer: SliderDrawerMenu.ratio(ratio: 1 / 2),
+        drawer: SliderDrawerMenu.fixed(
+          width: 200,
+          body: Center(
+            child: Text(
+              'Drawer Menu',
+              style: TextStyle(color: Colors.white, fontSize: 18),
+            ),
+          ),
+        ),
         body: DummyHomeBody(),
       ),
     );
