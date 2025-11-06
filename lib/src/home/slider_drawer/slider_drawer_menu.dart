@@ -5,9 +5,9 @@ enum SliderDrawerMode { fixed, ratio }
 class SliderDrawerMenu extends StatelessWidget {
   const SliderDrawerMenu._({
     required this.mode,
-    required this.width,
-    required this.ratio,
     required this.body,
+    this.width = 0,
+    this.ratio = 0,
     super.key,
   });
 
@@ -19,7 +19,6 @@ class SliderDrawerMenu extends StatelessWidget {
          mode: SliderDrawerMode.fixed,
          body: body,
          width: width,
-         ratio: -1,
          key: key,
        );
 
@@ -31,7 +30,6 @@ class SliderDrawerMenu extends StatelessWidget {
          mode: SliderDrawerMode.ratio,
          body: body,
          width: 0,
-         ratio: ratio,
          key: key,
        );
 
