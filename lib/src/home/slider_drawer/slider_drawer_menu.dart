@@ -29,7 +29,7 @@ class SliderDrawerMenu extends StatelessWidget {
   }) : this._(
          mode: SliderDrawerMode.ratio,
          body: body,
-         width: 0,
+         ratio: ratio,
          key: key,
        );
 
