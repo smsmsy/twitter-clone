@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/src/slider_drawer_scaffold.dart';
+import 'package:twitter_clone/src/home/slider_drawer_scaffold.dart';
 import 'package:twitter_clone/src/home/dummy_home_body.dart';
 import 'package:twitter_clone/src/home/slider_drawer_app_bar.dart';
 import 'package:twitter_clone/src/home/slider_drawer_menu.dart';
