@@ -1,16 +1,28 @@
 # twitter_clone
 
-A new Flutter project.
+(For JAPANESE: [README-JP.md](README-JP.md))
+
+I decided to study by building a Twitter (X) clone application.
+
+## Key Features
+
+- Infinite list view (not yet implemented)
+- Sliding drawer menu
+- and more...
+
+### Sliding Drawer Menu
+
+![Animated GIF of the sliding drawer menu](documents/assets/slider_drawer.gif)
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project uses FVM.
 
-A few resources to get you started if this is your first Flutter project:
+Using FVM is recommended, but you can also work with the native SDK by updating the `environment` section in [pubspec.yaml](pubspec.yaml).
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```yaml
+environment:
+  sdk: ^3.9.2 # Align this version with your Dart SDK version
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+After that, run `flutter run`.
