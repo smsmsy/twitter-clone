@@ -5,8 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/src/home/slider_drawer_app_bar.dart';
 import 'package:twitter_clone/src/home/slider_drawer_menu.dart';
 
-class SliderDrawerScaffold extends ConsumerStatefulWidget {
-  const SliderDrawerScaffold({
+class SliderDrawerView extends ConsumerStatefulWidget {
+  const SliderDrawerView({
     required this.drawer,
     required this.body,
     this.appBarOption,
@@ -18,10 +18,11 @@ class SliderDrawerScaffold extends ConsumerStatefulWidget {
   final Widget body;
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _HomeState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _SliderDrawerViewState();
 }
 
-class _HomeState extends ConsumerState<SliderDrawerScaffold>
+class _SliderDrawerViewState extends ConsumerState<SliderDrawerView>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   final Duration _duration = Durations.medium1;
@@ -53,48 +54,46 @@ class _HomeState extends ConsumerState<SliderDrawerScaffold>
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    return Scaffold(
-      body: GestureDetector(
-        onHorizontalDragStart: (details) {
-          _animationController.duration = Duration.zero;
-        },
-        onHorizontalDragUpdate: _onHorizontalDragUpdate,
-        onHorizontalDragEnd: (details) => _resetDragState(),
-        onHorizontalDragCancel: _resetDragState,
-        child: Stack(
-          children: [
-            Container(
-              width: size.width,
-              color: Colors.blueGrey,
-              child: widget.drawer,
-            ),
-            AnimatedBuilder(
-              animation: _animation,
-              builder: (context, child) {
-                return Positioned(
-                  left: _animation.value.dx,
-                  width: size.width,
-                  height: size.height,
-                  child: ColoredBox(
-                    color: Theme.of(context).colorScheme.surface,
-                    child: SafeArea(
-                      child: Column(
-                        children: [
-                          SliderDrawerAppBar(
-                            title: widget.appBarOption?.title,
-                            actions: widget.appBarOption?.actions,
-                            onPressed: _onPressedDrawerButton,
-                          ),
-                          widget.body,
-                        ],
-                      ),
+    return GestureDetector(
+      onHorizontalDragStart: (details) {
+        _animationController.duration = Duration.zero;
+      },
+      onHorizontalDragUpdate: _onHorizontalDragUpdate,
+      onHorizontalDragEnd: (details) => _resetDragState(),
+      onHorizontalDragCancel: _resetDragState,
+      child: Stack(
+        children: [
+          Container(
+            width: size.width,
+            color: Colors.blueGrey,
+            child: widget.drawer,
+          ),
+          AnimatedBuilder(
+            animation: _animation,
+            builder: (context, child) {
+              return Positioned(
+                left: _animation.value.dx,
+                width: size.width,
+                height: size.height,
+                child: ColoredBox(
+                  color: Theme.of(context).colorScheme.surface,
+                  child: SafeArea(
+                    child: Column(
+                      children: [
+                        SliderDrawerAppBar(
+                          title: widget.appBarOption?.title,
+                          actions: widget.appBarOption?.actions,
+                          onPressed: _onPressedDrawerButton,
+                        ),
+                        widget.body,
+                      ],
                     ),
                   ),
-                );
-              },
-            ),
-          ],
-        ),
+                ),
+              );
+            },
+          ),
+        ],
       ),
     );
   }

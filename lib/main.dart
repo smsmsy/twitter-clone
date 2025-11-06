@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/src/home/slider_drawer_scaffold.dart';
-import 'package:twitter_clone/src/home/dummy_home_body.dart';
-import 'package:twitter_clone/src/home/slider_drawer_app_bar.dart';
-import 'package:twitter_clone/src/home/slider_drawer_menu.dart';
+import 'package:twitter_clone/src/home/home.dart';
 import 'package:twitter_clone/src/theme/theme.dart';
 
 void main() {
@@ -34,22 +31,7 @@ class MyApp extends ConsumerWidget {
         ),
       ),
       themeMode: ref.watch(customThemeModeProvider),
-      home: const SliderDrawerScaffold(
-        appBarOption: SliderDrawerAppBarOption(
-          title: Expanded(
-            child: Text(
-              'ホーム',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-        drawer: SliderDrawerMenu.ratio(ratio: 1 / 2),
-        body: DummyHomeBody(),
-      ),
+      home: const Home(),
     );
   }
 }
