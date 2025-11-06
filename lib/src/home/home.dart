@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:twitter_clone/src/home/dummy_home_body.dart';
-import 'package:twitter_clone/src/home/slider_drawer_app_bar.dart';
-import 'package:twitter_clone/src/home/slider_drawer_menu.dart';
-import 'package:twitter_clone/src/home/slider_drawer_view.dart';
+import 'package:twitter_clone/src/home/body/dummy_home_body.dart';
+import 'package:twitter_clone/src/home/slider_drawer/slider_drawer_app_bar.dart';
+import 'package:twitter_clone/src/home/slider_drawer/slider_drawer_menu.dart';
+import 'package:twitter_clone/src/home/slider_drawer/slider_drawer_view.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
