@@ -18,10 +18,11 @@ class SliderDrawerScaffold extends ConsumerStatefulWidget {
   final Widget body;
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _HomeState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _SliderDrawerScaffoldState();
 }
 
-class _HomeState extends ConsumerState<SliderDrawerScaffold>
+class _SliderDrawerScaffoldState extends ConsumerState<SliderDrawerScaffold>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   final Duration _duration = Durations.medium1;
