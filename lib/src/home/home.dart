@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide BottomNavigationBar;
 import 'package:twitter_clone/src/home/body/dummy_home_body.dart';
+import 'package:twitter_clone/src/home/slider_drawer/bottom_navigation_bar.dart';
 import 'package:twitter_clone/src/home/slider_drawer/slider_drawer_app_bar.dart';
 import 'package:twitter_clone/src/home/slider_drawer/slider_drawer_menu.dart';
 import 'package:twitter_clone/src/home/slider_drawer/slider_drawer_view.dart';
@@ -9,9 +10,9 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SliderDrawerView(
-        appBarOption: SliderDrawerAppBarOption(
+        appBarOption: const SliderDrawerAppBarOption(
           title: Text(
             'ホーム',
             style: TextStyle(
@@ -21,7 +22,7 @@ class Home extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
         ),
-        drawer: SliderDrawerMenu.fixed(
+        drawer: const SliderDrawerMenu.fixed(
           width: 200,
           body: Center(
             child: Text(
@@ -30,7 +31,12 @@ class Home extends StatelessWidget {
             ),
           ),
         ),
-        body: DummyHomeBody(),
+        body: const DummyHomeBody(),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: const Icon(Icons.add),
+        ),
+        bottomNavigationBar: const BottomNavigationBar(),
       ),
     );
   }

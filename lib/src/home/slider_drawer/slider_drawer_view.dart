@@ -1,7 +1,8 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide BottomNavigationBar;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:twitter_clone/src/home/slider_drawer/bottom_navigation_bar.dart';
 import 'package:twitter_clone/src/home/slider_drawer/slider_drawer_app_bar.dart';
 import 'package:twitter_clone/src/home/slider_drawer/slider_drawer_menu.dart';
 
@@ -9,6 +10,8 @@ class SliderDrawerView extends ConsumerStatefulWidget {
   const SliderDrawerView({
     required this.drawer,
     required this.body,
+    required this.floatingActionButton,
+    required this.bottomNavigationBar,
     this.appBarOption,
     super.key,
   });
@@ -16,6 +19,8 @@ class SliderDrawerView extends ConsumerStatefulWidget {
   final SliderDrawerAppBarOption? appBarOption;
   final SliderDrawerMenu drawer;
   final Widget body;
+  final BottomNavigationBar bottomNavigationBar;
+  final FloatingActionButton floatingActionButton;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -86,9 +91,22 @@ class _SliderDrawerViewState extends ConsumerState<SliderDrawerView>
                           actions: widget.appBarOption?.actions,
                           onPressed: _onPressedDrawerButton,
                         ),
-                        widget.body,
+                        Expanded(
+                          child: Stack(
+                            children: [
+                              widget.body,
+                              Align(
+                                alignment: Alignment.bottomRight,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8),
+                                  child: widget.floatingActionButton,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                         const Divider(height: 0),
-                        const BottomNavigationBar(),
+                        widget.bottomNavigationBar,
                       ],
                     ),
                   ),
@@ -137,59 +155,5 @@ class _SliderDrawerViewState extends ConsumerState<SliderDrawerView>
         draggedRatio = 1;
       }
     });
-  }
-}
-
-class BottomNavigationBar extends StatelessWidget {
-  const BottomNavigationBar({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-    final size = MediaQuery.sizeOf(context);
-    const iconSize = 36.0;
-    return ColoredBox(
-      color: colorScheme.surface,
-      child: SizedBox(
-        width: size.width,
-        height: 50,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(
-              icon: const Icon(
-                Icons.home_filled,
-                size: iconSize,
-              ),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: const Icon(
-                Icons.search,
-                size: iconSize,
-              ),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: const Icon(
-                Icons.notifications_outlined,
-                size: iconSize,
-              ),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: const Icon(
-                Icons.mail_outline,
-                size: iconSize,
-              ),
-              onPressed: () {},
-            ),
-          ],
-        ),
-      ),
-    );
   }
 }
