@@ -88,49 +88,7 @@ class _SliderDrawerViewState extends ConsumerState<SliderDrawerView>
                         ),
                         widget.body,
                         const Divider(height: 0),
-                        ColoredBox(
-                          color: colorScheme.surface,
-                          child: SizedBox(
-                            width: size.width,
-                            height: 50,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                IconButton(
-                                  icon: const Icon(
-                                    Icons.home_filled,
-                                    size: 36,
-                                  ),
-                                  onPressed: () {},
-                                ),
-                                IconButton(
-                                  icon: const Icon(
-                                    Icons.search,
-                                    size: 36,
-                                  ),
-                                  onPressed: () {},
-                                ),
-                                IconButton(
-                                  icon: const Icon(
-                                    Icons.notifications_outlined,
-                                    size: 36,
-                                  ),
-                                  onPressed: () {},
-                                ),
-                                IconButton(
-                                  icon: const Icon(
-                                    Icons.mail_outline,
-                                    size: 36,
-                                  ),
-                                  onPressed: () {},
-                                ),
-                                // const Icon(Icons.search),
-                                // const Icon(Icons.notifications),
-                                // const Icon(Icons.mail_outline),
-                              ],
-                            ),
-                          ),
-                        ),
+                        const BottomNavigationBar(),
                       ],
                     ),
                   ),
@@ -179,5 +137,59 @@ class _SliderDrawerViewState extends ConsumerState<SliderDrawerView>
         draggedRatio = 1;
       }
     });
+  }
+}
+
+class BottomNavigationBar extends StatelessWidget {
+  const BottomNavigationBar({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final size = MediaQuery.sizeOf(context);
+    const iconSize = 36.0;
+    return ColoredBox(
+      color: colorScheme.surface,
+      child: SizedBox(
+        width: size.width,
+        height: 50,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              icon: const Icon(
+                Icons.home_filled,
+                size: iconSize,
+              ),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.search,
+                size: iconSize,
+              ),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.notifications_outlined,
+                size: iconSize,
+              ),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.mail_outline,
+                size: iconSize,
+              ),
+              onPressed: () {},
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
