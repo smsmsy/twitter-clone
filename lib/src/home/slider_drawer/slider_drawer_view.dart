@@ -71,12 +71,13 @@ class _SliderDrawerViewState extends ConsumerState<SliderDrawerView>
           AnimatedBuilder(
             animation: _animation,
             builder: (context, child) {
+              final colorScheme = Theme.of(context).colorScheme;
               return Positioned(
                 left: _animation.value.dx,
                 width: size.width,
                 height: size.height,
                 child: ColoredBox(
-                  color: Theme.of(context).colorScheme.surface,
+                  color: colorScheme.surface,
                   child: SafeArea(
                     child: Column(
                       children: [
@@ -86,6 +87,50 @@ class _SliderDrawerViewState extends ConsumerState<SliderDrawerView>
                           onPressed: _onPressedDrawerButton,
                         ),
                         widget.body,
+                        const Divider(height: 0),
+                        ColoredBox(
+                          color: colorScheme.surface,
+                          child: SizedBox(
+                            width: size.width,
+                            height: 50,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                IconButton(
+                                  icon: const Icon(
+                                    Icons.home_filled,
+                                    size: 36,
+                                  ),
+                                  onPressed: () {},
+                                ),
+                                IconButton(
+                                  icon: const Icon(
+                                    Icons.search,
+                                    size: 36,
+                                  ),
+                                  onPressed: () {},
+                                ),
+                                IconButton(
+                                  icon: const Icon(
+                                    Icons.notifications_outlined,
+                                    size: 36,
+                                  ),
+                                  onPressed: () {},
+                                ),
+                                IconButton(
+                                  icon: const Icon(
+                                    Icons.mail_outline,
+                                    size: 36,
+                                  ),
+                                  onPressed: () {},
+                                ),
+                                // const Icon(Icons.search),
+                                // const Icon(Icons.notifications),
+                                // const Icon(Icons.mail_outline),
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
