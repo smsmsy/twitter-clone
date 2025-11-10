@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 class DummyHomeBody extends StatelessWidget {
@@ -29,16 +27,10 @@ class DummyHomeBody extends StatelessWidget {
             ),
           );
           final dummyUserName = 'ユーザー $index';
-          final dummyUserAccountName = '@UserAcount_$index';
+          final dummyUserAccountName = '@UserAccount_$index';
           final dummyTweetText =
-              'これはツイート $index の内容です。Twitter クローンでアニメーション勉強中！'
+              'これはツイート $index の内容です。Twitter クローンでアニメーション勉強中！ '
               'あああああああああああああああああああああああああああああああああああああああああああ';
-
-          final random = Random();
-
-          final retweetCount = random.nextInt(1000);
-          final starCount = random.nextInt(1000);
-          final implessionCount = random.nextInt(1000);
 
           const iconDataList = [
             Icons.reply,
@@ -68,6 +60,7 @@ class DummyHomeBody extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          // UserInfo
                           Row(
                             children: [
                               Text(
@@ -83,12 +76,16 @@ class DummyHomeBody extends StatelessWidget {
                               ),
                             ],
                           ),
+
+                          // TweetContent
                           Text(
                             dummyTweetText,
                             maxLines: 7,
                             style: textTheme.bodyMedium,
                           ),
                           const SizedBox(height: 8),
+
+                          // Icons
                           Center(
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
