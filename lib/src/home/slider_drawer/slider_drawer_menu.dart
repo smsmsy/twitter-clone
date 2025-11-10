@@ -53,7 +53,7 @@ class SliderDrawerMenu extends StatelessWidget {
       'Must be drawer width are less than device width',
     );
     assert(
-      0 < ratio && ratio <= 1,
+      0 <= ratio && ratio <= 1,
       'Must be drawer ratio are 0 to 1',
     );
     return switch (mode) {
