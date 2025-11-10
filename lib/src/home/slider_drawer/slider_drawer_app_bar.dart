@@ -24,7 +24,11 @@ class SliderDrawerAppBar extends StatelessWidget {
     return Row(
       children: [
         IconButton(
-          icon: const Icon(Icons.menu),
+          icon: const SizedBox.square(
+            child: CircleAvatar(
+              child: Icon(Icons.person),
+            ),
+          ),
           onPressed: onPressed,
         ),
         if (title != null) title!,
