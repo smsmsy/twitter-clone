@@ -12,15 +12,13 @@ class Home extends StatelessWidget {
     return const Scaffold(
       body: SliderDrawerView(
         appBarOption: SliderDrawerAppBarOption(
-          title: Expanded(
-            child: Text(
-              'ホーム',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.center,
+          title: Text(
+            'ホーム',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
             ),
+            textAlign: TextAlign.center,
           ),
         ),
         drawer: SliderDrawerMenu.fixed(

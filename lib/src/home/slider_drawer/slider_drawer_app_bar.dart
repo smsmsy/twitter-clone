@@ -21,22 +21,32 @@ class SliderDrawerAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        IconButton(
-          icon: const SizedBox.square(
-            child: CircleAvatar(
-              child: Icon(Icons.person),
+    return Center(
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Align(
+            alignment: Alignment.topLeft,
+            child: IconButton(
+              icon: const SizedBox.square(
+                child: CircleAvatar(
+                  child: Icon(Icons.person),
+                ),
+              ),
+              onPressed: onPressed,
             ),
           ),
-          onPressed: onPressed,
-        ),
-        if (title != null) title!,
-        if (actions != null && actions!.isNotEmpty)
-          Row(
-            children: actions!,
-          ),
-      ],
+          if (title != null) title!,
+          if (actions != null && actions!.isNotEmpty)
+            Align(
+              alignment: Alignment.centerRight,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: actions!,
+              ),
+            ),
+        ],
+      ),
     );
   }
 }
